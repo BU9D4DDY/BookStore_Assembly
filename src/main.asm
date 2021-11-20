@@ -1,53 +1,66 @@
 .model small
 
 .data
-                                                 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                 ;;
+;;               DEFINING VARIABLES                ;;
+;;                                                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;dmsg0 db '                                                                                     $'
-dmsg1 db "    ____              __      _____ __",10,13,"$"                 
-dmsg2 db "   / __ )____  ____  / /__   / ___// /_____  ________",10,13,"$" 
-dmsg3 db "  / __  / __ \/ __ \/ //_/   \__ \/ __/ __ \/ ___/ _ \",10,13,"$"
-dmsg4 db " / /_/ / /_/ / /_/ / ,<     ___/ / /_/ /_/ / /  /  __/",10,13,"$"
-dmsg5 db "/_____/\____/\____/_/|_|   /____/\__/\____/_/   \___/",10,13,"$" 
-;dmsg6 db '                                                   $'  
-;dmsg7 db '888   d88P Y88..88P Y88..88P 888 "88b      Y88b  d88P Y88b. Y88..88P 888    Y8b.$'  
-;dmsg8 db '8888888P"   "Y88P"   "Y88P"  888  888       "Y8888P"   "Y888 "Y88P"  888     "Y8888$'  
-;dmsg9 db '                                                                                     $'  
-
+NewLine DB 0Dh,0Ah,"$"
+                                                                                                                                                                             
+Logo1: DB "888888b.                     888        .d8888b.  888                            ",0,13,                                                                   
+       DB '888  "88b                    888       d88P  Y88b 888                            ',0,13,                                                                   
+       DB "888  .88P                    888       Y88b.      888                            ",0,13,                                                                    
+       DB '8888888K.   .d88b.   .d88b.  888  888   "Y888b.   888888 .d88b.  888d888 .d88b.  ',0,13,                                                                   
+       DB '888  "Y88b d88""88b d88""88b 888 .88P      "Y88b. 888   d88""88b 888P"  d8P  Y8b ',0,13,    
+       DB '888    888 888  888 888  888 888888K         "888 888   888  888 888    88888888 ',0,13,  
+       DB '888   d88P Y88..88P Y88..88P 888 "88b  Y88b  d88P Y88b. Y88..88P 888    Y8b. ',10,13,
+       DB '8888888P"   "Y88P"   "Y88P"  888  888   "Y8888P"   "Y888 "Y88P"  888     "Y8888 ',10,13,"$"
+                                                                                                                                                                             
+                                                                                                                                                                             
+Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
+       DB "                              |W|E|L|C|O|M|E|",10,13,
+       DB "                              +-+-+-+-+-+-+-+",10,13,
+       DB "                                   ",3,3,3,3,3,10,13,"$"
+       
+GoodBye: 
+       DB 10,13,
+       DB "                              +-+-+-+-+-+-+-+",10,13,
+       DB "                              |G|O|O|D|B|Y|E|",10,13,
+       DB "                              +-+-+-+-+-+-+-+",10,13,
+       DB "                                   ",3,3,3,3,3,10,13,"$"
 
 
 .code
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                 ;;
+;;               DEFINING FUNCTIONS                ;;
+;;                                                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-macro printString str   
-  mov ah,9
-  lea dx,str
-  int 21h
+macro Print str   
+    mov dx,offset str
+    mov ah,9
+    int 21h
 endm
 
+
+;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
     
     mov ax,@data
     mov ds,ax
+
+    Print NewLine
+    Print Logo1
+    Print Logo2
     
-    ;PRINT dmsg0
-    printString dmsg1
-    printString dmsg2
-    printString dmsg3
-    printString dmsg4
-    printString dmsg5
-    ;printString dmsg6
-    ;printString dmsg7
-    ;PRINT dmsg8
-    ;PRINT dmsg9
-    
-    
-    
-endp
+main endp
 jmp ToEnd
 
-
-
 ToEnd:
-.exit
-end main
+    Print GoodBye
+    .exit
+    end main
