@@ -64,3 +64,11 @@ ToEnd:
     Print GoodBye
     .exit
     end main
+
+    menu:  DB "   1- Get a membership",0Dh,0Ah
+       DB "   2- Check Prices and Special offers",0Dh,0Ah 
+       DB "   3- About Us",0Dh,0Ah
+       DB "   4- Exit the application",0Dh,0Ah,
+       DB 10,13,"   Please Enter A Choice Between ( 1 - 4 ) ..... ",'$'
+ 
+wrong_choice DB 10,13,"   Please Enter A Choice Between ( 1 - 4 ) ..... ",'$'
