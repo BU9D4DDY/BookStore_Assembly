@@ -64,3 +64,32 @@ ToEnd:
     Print GoodBye
     .exit
     end main
+
+    menu:  DB "   1- Get a membership",0Dh,0Ah
+       DB "   2- Check Prices and Special offers",0Dh,0Ah 
+       DB "   3- About Us",0Dh,0Ah
+       DB "   4- Exit the application",0Dh,0Ah,
+       DB 10,13,"   Please Enter A Choice Between ( 1 - 4 ) ..... ",'$'
+ 
+wrong_choice DB 10,13,"   Please Enter A Choice Between ( 1 - 4 ) ..... ",'$'
+
+Total_msg: 
+       DB 10,13,
+       DB "   +-+-+-+-+",10,13,
+       DB "   |B|I|L|L|",10,13,
+       DB "   +-+-+-+-+",10,13,10,13,
+       DB "   Your Total Bill Is:  $"
+                                                                                                                                                                                                                                                                                  
+membership_menu:   
+       DB 10,13,10,13,
+       DB "        Membership                         Price     Discount",0Dh,0Ah,0Dh,0Ah
+       DB "   1- Weekly membership        Adult     30 U.S.D       0%",0Dh,0Ah
+       DB "   2- Weekly membership        Child     15 U.S.D       0%",0Dh,0Ah
+       DB "   3- Monthly membership       Adult     96 U.S.D      20%",0Dh,0Ah
+       DB "   4- Monthly membership       Child     48 U.S.D      20%",0Dh,0Ah
+       DB "   5- Annuall membership       Adult    860 U.S.D      40%",0Dh,0Ah,
+       DB "   6- Annuall membership       Child    430 U.S.D      40%",0Dh,0Ah,0Dh,0Ah
+       DB "   Enter the number of the membership you want:  ",'$'
+                                                                                                                                                                             
+membership_amount: 
+       DB 0Dh,0Ah,"   How many membership do you want to buy (00-99)? ",'$'
