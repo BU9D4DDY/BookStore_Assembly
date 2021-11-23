@@ -17,7 +17,8 @@ Logo1: DB "888888b.                     888        .d8888b.  888                
        DB '888    888 888  888 888  888 888888K         "888 888   888  888 888    88888888 ',0,13,  
        DB '888   d88P Y88..88P Y88..88P 888 "88b  Y88b  d88P Y88b. Y88..88P 888    Y8b. ',10,13,
        DB '8888888P"   "Y88P"   "Y88P"  888  888   "Y8888P"   "Y888 "Y88P"  888     "Y8888 ',10,13,"$"
-                                                                                                                                                                                                                                                                                                                                                         
+
+
 Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                              |W|E|L|C|O|M|E|",10,13,
        DB "                              +-+-+-+-+-+-+-+",10,13,
@@ -87,6 +88,7 @@ AboutUs:
 Return DB "   Do You Want To Go Back ?(y/n) $"
 
 
+
 adult    DD 30     ; adult Price 30 U.S.D
 child    DD 15     ; child Price 15 U.S.D
 adult20  DD 24     ; adult Price with 20% discount 24
@@ -112,6 +114,31 @@ macro Print str
     mov ah,9
     int 21h
 endm
+
+macro Returning
+    
+    Print Return
+    call GetInput
+    cmp al, 'y'
+    je  Start
+    cmp al, 'Y'
+    je  Start
+    
+    ;==else==;     
+    jmp ToEnd
+    
+endm
+
+macro count value
+    
+    mov ax, value
+    mov bx, membership_num
+    mul bx
+    mov result , ax
+    jmp PRINT_RESULT
+        
+endm    
+
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
