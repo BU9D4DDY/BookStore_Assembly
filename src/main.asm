@@ -148,13 +148,35 @@ main proc
 
     Print NewLine
     Print Logo1
-    Print Logo2
+
+    Start:
+    
+        Print NewLine
+        Print Logo2
+        Print NewLine
+        Print menu
+    
+    get_choice:
+      
+        call GetInput                   ; read the user choice
+    
+        cmp al, '1'                     ; first choice
+        je  FIRST_CHOICE 
+        
+        cmp al, '2'                     ; second choice
+        je  SECOND_CHOICE
+          
+        cmp al, '3'                     ; third choice
+        je  THIRD_CHOICE
+          
+        cmp al, '4'                     ;===== Exit the application =====;
+        je  ToEnd
     
 main endp
 jmp ToEnd
+
 
 ToEnd:
     Print GoodBye
     .exit
     end main
-
