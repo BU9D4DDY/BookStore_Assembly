@@ -17,6 +17,7 @@ Logo1: DB "888888b.                     888        .d8888b.  888                
        DB '888    888 888  888 888  888 888888K         "888 888   888  888 888    88888888 ',0,13,  
        DB '888   d88P Y88..88P Y88..88P 888 "88b  Y88b  d88P Y88b. Y88..88P 888    Y8b. ',10,13,
        DB '8888888P"   "Y88P"   "Y88P"  888  888   "Y8888P"   "Y888 "Y88P"  888     "Y8888 ',10,13,"$"
+
                                                                                                                                                                                                                                                                                                                                                          
 Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                              |W|E|L|C|O|M|E|",10,13,
@@ -30,7 +31,7 @@ GoodBye:
        DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                                   ",3,3,3,3,3,10,13,"$"
 
-    menu:  DB "   1- Get a membership",0Dh,0Ah
+menu:  DB "   1- Get a membership",0Dh,0Ah
        DB "   2- Check Prices and Special offers",0Dh,0Ah 
        DB "   3- About Us",0Dh,0Ah
        DB "   4- Exit the application",0Dh,0Ah,
@@ -59,6 +60,31 @@ membership_menu:
 membership_amount: 
        DB 0Dh,0Ah,"   How many membership do you want to buy (00-99)? ",'$'
 
+INFO:  DB 10,13,10,13,
+       DB "        BOOK NAME                          Price  ",0Dh,0Ah,0Dh,0Ah
+       DB "   In Search of Lost Time               300 U.S.D",0Dh,0Ah,
+       DB "   Don Quixote                          700 U.S.D",0Dh,0Ah,
+       DB "   The Great Gatsby                     450 U.S.D",0Dh,0Ah,
+       DB "   Moby Dick                            300 U.S.D",0Dh,0Ah,
+       DB "   To Kill a Mockingbird                320 U.S.D",0Dh,0Ah,
+       DB "   Things Fall Apart                    100 U.S.D",0Dh,0Ah,
+       DB "   The Color Purple                     250 U.S.D",0Dh,0Ah,
+       DB "   Don Quixote                          380 U.S.D",0Dh,0Ah,
+       DB "   The Call of the Wild                 690 U.S.D",0Dh,0Ah,
+       DB "   A Passage to India                   520 U.S.D",0Dh,0Ah,0Dh,0Ah
+       DB "   You Can Purchase Any Of These Books In Our Official Store ",3,3,3,0Dh,0Ah,10,13,'$'
+
+AboutUs:
+       DB 10,13,10,13,
+       DB "   +-+-+-+-+-+-+-+",10,13,
+       DB "   |A|B|O|T| |U|S|",10,13,
+       DB "   +-+-+-+-+-+-+-+",10,13,
+       DB 0Dh,0Ah,
+       DB "   We Are THE AMAZING Book Store",0Dh,0Ah
+       DB "   We have textbooks, novels, biographies, and short stories",0Dh,0Ah 
+       DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
+       DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
+         
 INFO:  DB 10,13,10,13,
        DB "        BOOK NAME                          Price  ",0Dh,0Ah,0Dh,0Ah
        DB "   In Search of Lost Time               300 U.S.D",0Dh,0Ah,
