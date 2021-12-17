@@ -88,6 +88,7 @@ AboutUs:
 Return DB "   Do You Want To Go Back ?(y/n) $"
 
 
+
 adult    DD 30     ; adult Price 30 U.S.D
 child    DD 15     ; child Price 15 U.S.D
 adult20  DD 24     ; adult Price with 20% discount 24
@@ -113,6 +114,21 @@ macro Print str
     mov ah,9
     int 21h
 endm
+
+macro Returning
+    
+    Print Return
+    call GetInput
+    cmp al, 'y'
+    je  Start
+    cmp al, 'Y'
+    je  Start
+    
+    ;==else==;     
+    jmp ToEnd
+    
+endm
+
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
