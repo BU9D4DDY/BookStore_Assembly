@@ -84,33 +84,9 @@ AboutUs:
        DB "   We have textbooks, novels, biographies, and short stories",0Dh,0Ah 
        DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
        DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
-         
-INFO:  DB 10,13,10,13,
-       DB "        BOOK NAME                          Price  ",0Dh,0Ah,0Dh,0Ah
-       DB "   In Search of Lost Time               300 U.S.D",0Dh,0Ah,
-       DB "   Don Quixote                          700 U.S.D",0Dh,0Ah,
-       DB "   The Great Gatsby                     450 U.S.D",0Dh,0Ah,
-       DB "   Moby Dick                            300 U.S.D",0Dh,0Ah,
-       DB "   To Kill a Mockingbird                320 U.S.D",0Dh,0Ah,
-       DB "   Things Fall Apart                    100 U.S.D",0Dh,0Ah,
-       DB "   The Color Purple                     250 U.S.D",0Dh,0Ah,
-       DB "   Don Quixote                          380 U.S.D",0Dh,0Ah,
-       DB "   The Call of the Wild                 690 U.S.D",0Dh,0Ah,
-       DB "   A Passage to India                   520 U.S.D",0Dh,0Ah,0Dh,0Ah
-       DB "   You Can Purchase Any Of These Books In Our Official Store ",3,3,3,0Dh,0Ah,10,13,'$'
-
-AboutUs:
-       DB 10,13,10,13,
-       DB "   +-+-+-+-+-+-+-+",10,13,
-       DB "   |A|B|O|T| |U|S|",10,13,
-       DB "   +-+-+-+-+-+-+-+",10,13,
-       DB 0Dh,0Ah,
-       DB "   We Are THE AMAZING Book Store",0Dh,0Ah
-       DB "   We have textbooks, novels, biographies, and short stories",0Dh,0Ah 
-       DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
-       DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
-         
+    
 Return DB "   Do You Want To Go Back ?(y/n) $"
+
 
 
 adult    DD 30     ; adult Price 30 U.S.D
@@ -138,6 +114,21 @@ macro Print str
     mov ah,9
     int 21h
 endm
+
+macro Returning
+    
+    Print Return
+    call GetInput
+    cmp al, 'y'
+    je  Start
+    cmp al, 'Y'
+    je  Start
+    
+    ;==else==;     
+    jmp ToEnd
+    
+endm
+
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
