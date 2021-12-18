@@ -129,6 +129,17 @@ macro Returning
     
 endm
 
+macro count value 
+
+    mov al, value
+    mov bl, membership_num
+    mul bl
+    mov result , ax
+    jmp PRINT_RESULT
+    
+        
+endm    
+
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
@@ -138,13 +149,31 @@ main proc
 
     Print NewLine
     Print Logo1
-    Print Logo2
+
+    Start:
     
-main endp
-jmp ToEnd
-
-ToEnd:
-    Print GoodBye
-    .exit
-    end main
-
+        Print NewLine
+        Print Logo2
+        Print NewLine
+        Print menu
+    
+    get_choice:
+      
+        call GetInput                   ; read the user choice
+    
+        cmp al, '1'                     ; first choice
+        je  FIRST_CHOICE 
+        
+        cmp al, '2'                     ; second choice
+        je  SECOND_CHOICE
+          
+        cmp al, '3'                     ; third choice
+        je  THIRD_CHOICE
+          
+        cmp al, '4'                     ;===== Exit the application =====;
+        je  ToEnd
+          
+        ;;;;;  loop back to get_choice until the user choose  ;;;;;
+        Print wrong_choice  
+        jmp get_choice
+          
