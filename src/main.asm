@@ -18,7 +18,7 @@ Logo1: DB "888888b.                     888        .d8888b.  888                
        DB '888   d88P Y88..88P Y88..88P 888 "88b  Y88b  d88P Y88b. Y88..88P 888    Y8b. ',10,13,
        DB '8888888P"   "Y88P"   "Y88P"  888  888   "Y8888P"   "Y888 "Y88P"  888     "Y8888 ',10,13,"$"
 
-
+                                                                                                                                                                                                                                                                                                                                                         
 Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                              |W|E|L|C|O|M|E|",10,13,
        DB "                              +-+-+-+-+-+-+-+",10,13,
@@ -31,7 +31,7 @@ GoodBye:
        DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                                   ",3,3,3,3,3,10,13,"$"
 
-    menu:  DB "   1- Get a membership",0Dh,0Ah
+menu:  DB "   1- Get a membership",0Dh,0Ah
        DB "   2- Check Prices and Special offers",0Dh,0Ah 
        DB "   3- About Us",0Dh,0Ah
        DB "   4- Exit the application",0Dh,0Ah,
@@ -84,7 +84,7 @@ AboutUs:
        DB "   We have textbooks, novels, biographies, and short stories",0Dh,0Ah 
        DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
        DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
-         
+    
 Return DB "   Do You Want To Go Back ?(y/n) $"
 
 
