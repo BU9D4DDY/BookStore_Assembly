@@ -17,11 +17,8 @@ Logo1: DB "888888b.                     888        .d8888b.  888                
        DB '888    888 888  888 888  888 888888K         "888 888   888  888 888    88888888 ',0,13,  
        DB '888   d88P Y88..88P Y88..88P 888 "88b  Y88b  d88P Y88b. Y88..88P 888    Y8b. ',10,13,
        DB '8888888P"   "Y88P"   "Y88P"  888  888   "Y8888P"   "Y888 "Y88P"  888     "Y8888 ',10,13,"$"
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
-                                                                                                                                                                                                                                                                                                                                                         
+
 Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                              |W|E|L|C|O|M|E|",10,13,
        DB "                              +-+-+-+-+-+-+-+",10,13,
@@ -87,18 +84,11 @@ AboutUs:
        DB "   We have textbooks, novels, biographies, and short stories",0Dh,0Ah 
        DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
        DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
-<<<<<<< Updated upstream
     
 Return DB "   Do You Want To Go Back ?(y/n) $"
 
 
-
-=======
-         
-Return DB "   Do You Want To Go Back ?(y/n) $"
-
-
->>>>>>> Stashed changes
+     
 adult    DD 30     ; adult Price 30 U.S.D
 child    DD 15     ; child Price 15 U.S.D
 adult20  DD 24     ; adult Price with 20% discount 24
@@ -124,7 +114,6 @@ macro Print str
     mov ah,9
     int 21h
 endm
-<<<<<<< Updated upstream
 
 macro Returning
     
@@ -151,8 +140,6 @@ macro count value
         
 endm    
 
-=======
->>>>>>> Stashed changes
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
 
 main proc
