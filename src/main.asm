@@ -177,3 +177,40 @@ main proc
         Print wrong_choice  
         jmp get_choice
           
+    
+    ;===== Getting a membership =====;
+    FIRST_CHOICE:
+        
+        Print membership_menu           ;display the membership offer message
+         
+        call GetInput
+                           ; read the user choice (What membership?)
+        mov membership_type, al
+        Print NewLine
+       ; sub membership_type, 
+       ; Print membership_type 
+                ;--------------------------------------------------->2 
+          
+        Print membership_amount         ;display the membership_amount
+        
+        ; read first digit
+        call GetInput                   ; Get the number of Memberships
+               
+       ; mov membership_num, al
+       ; Print NewLine
+      
+        
+        SUB AL, 30H  ; convert first digit from ascii to number
+        MOV AH, 0
+        MOV BL, 10
+        MUL BL
+        MOV BL, AL  
+        
+        
+      ; read second digit 
+        call GetInput    
+        SUB AL, 30H ; convert second digit from ascii to number
+        MOV AH, 0
+        ADD AL, BL      
+        mov membership_num, al 
+      
