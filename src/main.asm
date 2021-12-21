@@ -214,3 +214,38 @@ main proc
         ADD AL, BL      
         mov membership_num, al 
       
+          
+        Print NewLine
+      
+        cmp membership_type, '1'
+        je  ADULT_0
+        cmp membership_type, '2'
+        je  CHILD_0
+        cmp membership_type, '3'
+        je  ADULT_20
+        cmp membership_type, '4'
+        je  CHILD_20
+        cmp membership_type, '5'
+        je  ADULT_40
+        cmp membership_type, '6'
+        je  CHILD_40
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        
+        ADULT_0:
+            Count adult
+            
+        CHILD_0:
+            Count child
+            
+        ADULT_20:
+            Count adult20
+            
+        CHILD_20:
+            Count child20
+            
+        ADULT_40:
+            Count adult40
+            
+        CHILD_40:
+            Count child40
+                
