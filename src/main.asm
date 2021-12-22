@@ -249,3 +249,37 @@ main proc
         CHILD_40:
             Count child40
                 
+                
+        PRINT_RESULT:
+            Print Total_msg      
+            mov ax, result
+            mov result, 0
+            ; convert decimal to hex to print result
+            LEA SI, RES
+            MOV CX,0
+            MOV BX,10
+          LOOP1: 
+            MOV DX,0
+            DIV BX
+            ADD DL,30H
+            PUSH DX
+            INC CX
+            CMP AX,9
+            JG LOOP1
+            ADD AL,30H
+            MOV [SI],AL
+          LOOP2: 
+            POP AX
+            INC SI
+            MOV [SI],AL
+            LOOP LOOP2
+         
+            LEA DX,RES
+            MOV AH,9
+            INT 21H
+            ;printing new line
+            Print NewLine
+            Print NewLine
+            Returning
+                
+    
