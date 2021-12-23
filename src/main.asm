@@ -293,3 +293,25 @@ main proc
     THIRD_CHOICE:
         Print AboutUs
         Returning
+        
+                
+    main endp
+jmp ToEnd
+
+
+;;;;;;;;;  Reading User Input  ;;;;;;;;;;;;
+
+GetInput proc
+    mov ah, 1                                         
+    int 21h
+
+    ret
+    GetInput endp
+
+;;;;;;;;;  Ending The Program  ;;;;;;;;;;;;
+
+ToEnd:
+    Print GoodBye
+    .exit
+    end main
+            
