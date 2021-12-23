@@ -283,3 +283,13 @@ main proc
             Returning
                 
     
+    ;===== Checking Prices And Offers =====; 
+    SECOND_CHOICE:
+        Print INFO
+        Returning
+      
+    
+    ;===== Viewing The About =====;
+    THIRD_CHOICE:
+        Print AboutUs
+        Returning
