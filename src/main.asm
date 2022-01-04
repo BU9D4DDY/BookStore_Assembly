@@ -275,13 +275,17 @@ main proc
                  
                 
         PRINT_RESULT:
+        
             Print Total_msg      
+        
             mov ax, result
-            mov result, 0
-            ; convert decimal to hex to print result
+            mov result, 0                                       
+            
+            ;===== convert decimal to hex to print result =====;
             LEA SI, RES
             MOV CX,0
-            MOV BX,10
+            MOV BX,10                              
+            
           LOOP1: 
             MOV DX,0
             DIV BX
