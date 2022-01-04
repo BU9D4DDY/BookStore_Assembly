@@ -239,21 +239,22 @@ main proc
         mov membership_num, al 
       
         Print NewLine
-      
+        
+        ;===== Comparing Which Membership Triggered =====;
         cmp membership_type, '1'
         je  ADULT_0
         cmp membership_type, '2'
         je  CHILD_0
         cmp membership_type, '3'
-        je  ADULT_20
+        je  ADULT_M
         cmp membership_type, '4'
-        je  CHILD_20
+        je  CHILD_M
         cmp membership_type, '5'
-        je  ADULT_40
+        je  ADULT_Y
         cmp membership_type, '6'
-        je  CHILD_40
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        
+        je  CHILD_Y
+ 
+     
         ADULT_0:
             Count adult
             
