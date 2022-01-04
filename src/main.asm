@@ -261,18 +261,18 @@ main proc
         CHILD_0:
             Count child
             
-        ADULT_20:
-            Count adult20
+        ADULT_M:
+            Count adultM
             
-        CHILD_20:
-            Count child20
+        CHILD_M:
+            Count childM
             
-        ADULT_40:
-            Count adult40
+        ADULT_Y:
+            Count adultY
             
-        CHILD_40:
-            Count child40
-                
+        CHILD_Y:
+            Count childY
+                 
                 
         PRINT_RESULT:
             Print Total_msg      
