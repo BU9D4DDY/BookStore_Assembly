@@ -304,10 +304,7 @@ main proc
                 LOOP LOOP2
             
             Print RES
-            LEA DX,RES
-            MOV AH,9
-            INT 21H
-            ;printing new line
+  
             Print NewLine
             Print NewLine
             Returning
