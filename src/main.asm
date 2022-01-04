@@ -286,16 +286,17 @@ main proc
             MOV CX,0
             MOV BX,10                              
             
-          LOOP1: 
-            MOV DX,0
-            DIV BX
-            ADD DL,30H
-            PUSH DX
-            INC CX
-            CMP AX,9
-            JG LOOP1
-            ADD AL,30H
-            MOV [SI],AL
+            LOOP1: 
+                MOV DX,0
+                DIV BX              ;DX:AX/BX >> res in AX and reminder in DX
+                ADD DL,30H
+                PUSH DX
+                INC CX
+                CMP AX,9
+                JG LOOP1
+                ADD AL,30H
+                MOV [SI],AL
+            
           LOOP2: 
             POP AX
             INC SI
