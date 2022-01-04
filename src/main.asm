@@ -325,20 +325,36 @@ main proc
     main endp
 jmp ToEnd
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                 ;;
+;;               DEFINING Procedures               ;;
+;;                                                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;;;;;;;;  Reading User Input  ;;;;;;;;;;;;
 
 GetInput proc
-    mov ah, 1                                         
+    mov ah, 1       ;take one char as input and save it in "al"                                        
     int 21h
 
     ret
     GetInput endp
+
+
+NEWLINE_LOOP proc
+    mov cx, 15
+    
+    loopm:
+        Print NewLine
+        loop loopm
+    
+    ret
+    NEWLINE_LOOP endp
 
 ;;;;;;;;;  Ending The Program  ;;;;;;;;;;;;
 
 ToEnd:
     Print GoodBye
     .exit
-    end main
-            
+    end main          
