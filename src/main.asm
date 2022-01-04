@@ -297,12 +297,13 @@ main proc
                 ADD AL,30H
                 MOV [SI],AL
             
-          LOOP2: 
-            POP AX
-            INC SI
-            MOV [SI],AL
-            LOOP LOOP2
-         
+             LOOP2: 
+                POP AX
+                INC SI
+                MOV [SI],AL
+                LOOP LOOP2
+            
+            Print RES
             LEA DX,RES
             MOV AH,9
             INT 21H
