@@ -115,19 +115,27 @@ RES              DB 5 DUP ('$')    ;Declare all as end of string for recognition
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 macro Print str   
-    mov dx,offset str
-    mov ah,9
-    int 21h
+    mov dx,offset str            ;any data in DX will be printed using the following instructions
+    mov ah,9                     ;instruction to print a string         (9h) for string , (2h) for character, 
+    int 21h                      ;interupt and don't run any other instruction till the previous finish
 endm
+
 
 macro Returning
     
     Print Return
-    call GetInput
+    call GetInput                ;the input will be saved in "al"
+    
+    push ax    
+                                 ;print new line for 15 times for a clean formatting
+    call NEWLINE_LOOP
+       
+    pop ax
+    
     cmp al, 'y'
-    je  Start
-    cmp al, 'Y'
-    je  Start
+    je  Start                    ;if the input that is saved in "al" is equal to "y" or "Y"
+    cmp al, 'Y'                  ;The Program will go to the start and begin again
+    je  Start                    ;(je) jump if equal ----- (jmp)  jump
     
     ;==else==;     
     jmp ToEnd
