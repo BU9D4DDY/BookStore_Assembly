@@ -208,36 +208,36 @@ main proc
         cmp al, '6'
         jle CONTINUED
         
+    check1failed:
+        
+        Print NewLine                   
+        Print wrong_choice2  
+        jmp GET_INPUT_AGAIN       ;  loop back to get_choice until the user choice is correct  ;
+        
+    CONTINUED:
+        
         mov membership_type, al
         Print NewLine
-       ; sub membership_type, 
-       ; Print membership_type 
-                ;--------------------------------------------------->2 
-          
+        
         Print membership_amount         ;display the membership_amount
         
-        ; read first digit
-        call GetInput                   ; Get the number of Memberships
-               
-       ; mov membership_num, al
-       ; Print NewLine
-      
+        ;===== First digit =====;
+        call GetInput                   ; Get the number of Memberships      
         
-        SUB AL, 30H  ; convert first digit from ascii to number
+        SUB AL, 30H                     ; converting first digit from ascii to number
         MOV AH, 0
         MOV BL, 10
         MUL BL
         MOV BL, AL  
         
-        
-      ; read second digit 
+        ;===== Second digit =====;
         call GetInput    
-        SUB AL, 30H ; convert second digit from ascii to number
+        
+        SUB AL, 30H                     ; convert second digit from ascii to number
         MOV AH, 0
         ADD AL, BL      
         mov membership_num, al 
       
-          
         Print NewLine
       
         cmp membership_type, '1'
