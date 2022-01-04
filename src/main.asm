@@ -195,10 +195,19 @@ main proc
     ;===== Getting a membership =====;
     FIRST_CHOICE:
         
-        Print membership_menu           ;display the membership offer message
+        Print membership_menu           ;display the membership prices message
+    
+    GET_INPUT_AGAIN:
          
-        call GetInput
-                           ; read the user choice (What membership?)
+        call GetInput                   ; read the user choice (What membership?)   
+        
+        ;== check input if in range (1-6) ==;
+        cmp al, '0'
+        je check1failed        
+        
+        cmp al, '6'
+        jle CONTINUED
+        
         mov membership_type, al
         Print NewLine
        ; sub membership_type, 
