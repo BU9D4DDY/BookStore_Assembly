@@ -157,36 +157,37 @@ endm
 
 main proc
     
-    mov ax,@data
-    mov ds,ax
+    mov ax,@data                        ;pointing the data segment to the beggining of the data initialized above
+    mov ds,ax                           ;>> can be reblaced by (.STARTUP)
 
     Print NewLine
-    Print Logo1
+    Print Logo1                         ;Printing The BOOK STORE Logo
 
     Start:
     
         Print NewLine
-        Print Logo2
+        Print Logo2                     ;Printing The WELCOME Logo
         Print NewLine
         Print menu
     
+    ;===== Getting The Menu Choise =====;
     get_choice:
       
-        call GetInput                   ; read the user choice
+        call GetInput                   ; read the user choice  <saved as ascii code>
     
         cmp al, '1'                     ; first choice
         je  FIRST_CHOICE 
         
-        cmp al, '2'                     ; second choice
+        cmp al, '2'                     ; second choice > Viewing info about the books
         je  SECOND_CHOICE
           
-        cmp al, '3'                     ; third choice
+        cmp al, '3'                     ; third choice  > Viewing AboutUS
         je  THIRD_CHOICE
           
-        cmp al, '4'                     ;===== Exit the application =====;
+        cmp al, '4'                     ; Exit the application
         je  ToEnd
           
-        ;;;;;  loop back to get_choice until the user choose  ;;;;;
+        ;;;;;  loop back to get_choice until the user choice is correct  ;;;;;
         Print wrong_choice  
         jmp get_choice
           
