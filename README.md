@@ -171,3 +171,34 @@ Now lets consider a customer wishing to purchase number of subscriptions, so he 
 ![4](/_resources/4.png)
 
 ... the user must choose the type of the membership as a number between ( 1 - 6 ), if the input is not in this range there is some error handling code to make the user input the right choice
+
+```assembly
+FIRST_CHOICE:
+        
+        Print membership_menu           ;display the membership prices message
+    
+    GET_INPUT_AGAIN:
+         
+        call GetInput                   ; read the user choice (What membership?)   
+        
+        ;== handle the user input ==;
+        ;== check input if in range (1-6) ==;
+        cmp al, '0'
+        je check1failed        
+        
+        cmp al, '6'
+        jle CONTINUED
+        
+    check1failed:
+        
+        Print NewLine                   
+        Print wrong_choice2  
+        jmp GET_INPUT_AGAIN       ;  loop back to get_choice until the user choice is correct  ;
+        
+    CONTINUED:
+        
+        mov membership_type, al
+        Print NewLine
+```
+
+after that the program will display a message to ask the user to enter the number of subscription he wants between ( 00 - 99 ) and calculate the total price and print out the bill and ask the user if he wants to go back to the main menu again
