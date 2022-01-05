@@ -65,7 +65,7 @@ membership_menu:
        DB "   Enter the Type of the membership you want:  ",'$'
                                                                                                                                                                              
 membership_amount: 
-       DB 0Dh,0Ah,"   How many membership do you want to buy (00-99)? ",'$'
+       DB 0Dh,0Ah,"   How many memberships do you want to buy - enter 2 digits between (00-99)? ",'$'
 
 INFO:  DB 10,13,10,13,
        
@@ -93,8 +93,7 @@ AboutUs:
        DB "   The Store opens every day from 10:00AM to 04:00PM.",0Dh,0Ah
        DB "   You Can Contanct Us Via (+2) 012345678910.",0Dh,0Ah,,0Dh,0Ah,'$'
          
-Return DB "   Do You Want To Go Back ?(y/n) $"
-
+Return DB "   Do You Want To Go Back ?(y / any key) $"
 
 
 adult    DB 20      ; WEEKLY Adult Price 20 U.S.D  
@@ -124,7 +123,7 @@ macro Print str
     mov ah,9                     ;instruction to print a string         (9h) for string , (2h) for character, 
     int 21h                      ;interupt and don't run any other instruction till the previous finish
 endm
-
+       
 
 macro Returning
     
@@ -146,7 +145,8 @@ macro Returning
     jmp ToEnd
     
 endm
-
+  
+  
 macro count value 
 
     mov al, value
@@ -154,8 +154,7 @@ macro count value
     mul bl
     mov result , ax
     jmp PRINT_RESULT
-    
-        
+      
 endm    
 
 ;;;;;;;;;;;;;;;;;;  MAIN Function  ;;;;;;;;;;;;;;;;;;
@@ -214,14 +213,17 @@ main proc
         call GetInput                   ; read the user choice (What membership?)   
         
         ;== check input if in range (1-6) ==;
-        cmp al, '0'
+        cmp al,00Dh                     ;if the user input (ENTER) the program will handle this error
         je check1failed        
+        
+        cmp al, '0'
+        je check1failed
         
         cmp al, '6'
         jle CONTINUED
         
     check1failed:
-        
+       
         Print NewLine                   
         Print wrong_choice2  
         jmp GET_INPUT_AGAIN       ;  loop back to get_choice until the user choice is correct  ;
@@ -230,13 +232,18 @@ main proc
         
         mov membership_type, al
         Print NewLine
+    
+    GoHere:
         
         Print membership_amount         ;display the membership_amount
         
         ;===== First digit =====;
         call GetInput                   ; Get the number of Memberships      
         
-        SUB AL, 30H                     ; converting first digit from ascii to number
+        cmp al,00Dh                     
+        je GoHere
+        
+        SUB AL, 30H                     ; converting first digit from ascii to number        
         MOV AH, 0
         MOV BL, 10
         MUL BL
@@ -245,9 +252,12 @@ main proc
         ;===== Second digit =====;
         call GetInput    
         
+        cmp al,00Dh
+        je GoHere
+        
         SUB AL, 30H                     ; convert second digit from ascii to number
         MOV AH, 0
-        ADD AL, BL      
+        ADD AL, BL     
         mov membership_num, al 
       
         Print NewLine
@@ -255,14 +265,19 @@ main proc
         ;===== Comparing Which Membership Triggered =====;
         cmp membership_type, '1'
         je  ADULT_0
+        
         cmp membership_type, '2'
-        je  CHILD_0
+        je  CHILD_0 
+        
         cmp membership_type, '3'
-        je  ADULT_M
+        je  ADULT_M  
+        
         cmp membership_type, '4'
-        je  CHILD_M
+        je  CHILD_M 
+        
         cmp membership_type, '5'
         je  ADULT_Y
+        
         cmp membership_type, '6'
         je  CHILD_Y
  
@@ -343,7 +358,6 @@ jmp ToEnd
 ;;                                                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 ;;;;;;;;;  Reading User Input  ;;;;;;;;;;;;
 
 GetInput proc
@@ -353,6 +367,7 @@ GetInput proc
     ret
     GetInput endp
 
+;;;;;;;;;  Loop to print newline in 15 lines  ;;;;;;;;;;;;
 
 NEWLINE_LOOP proc
     mov cx, 15
