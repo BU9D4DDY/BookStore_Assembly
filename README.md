@@ -116,3 +116,58 @@ macro count value
             
 endm
 ```
+
+* GetInput Procedure that is called whenever the program is performing an input request.
+
+```assembly
+GetInput proc
+    mov ah, 1       ;take one char as input and save it in "al"                                        
+    int 21h
+
+    ret
+    GetInput endp
+```
+
+
+
+... The Program Flow Works As  Follows, At Startup The Main Menu Will Be Displayed For The Customer Like That
+
+![2](/_resources/2.png)
+
+So The Customer has Four Options To Choose From ...
+and Here comes the first error handling in our program, if the user entered any number rather than ( 1, 2, 3, 4 ) the program will produce an error message for the user and ask him to enter  the correct choice
+
+![3](/_resources/3.png)
+
+this error handling is produced using the following piece of code
+
+```assembly
+;===== Getting The Menu Choise =====;
+get_choice:   
+        call GetInput                   ; read the user choice  <saved as ascii code>
+        
+        cmp al, '1'                     ; first choice
+        je  FIRST_CHOICE 
+        
+        cmp al, '2'                     ; second choice > Viewing info about the books
+        je  SECOND_CHOICE
+          
+        cmp al, '3'                     ; third choice  > Viewing AboutUS
+        je  THIRD_CHOICE
+          
+        cmp al, '4'                     ; Exit the application
+        je  ToEnd
+          
+        ;;;;;  loop back to get_choice until the user choice is correct  ;;;;;
+        
+        Print wrong_choice  
+        jmp get_choice        
+```
+
+> First Choice
+
+Now lets consider a customer wishing to purchase number of subscriptions, so he entered ( 1 ) to choose from the main menu, the program will detect that there is no error in the input and will continue to display the menu of subscriptions prices for the user
+
+![4](/_resources/4.png)
+
+... the user must choose the type of the membership as a number between ( 1 - 6 ), if the input is not in this range there is some error handling code to make the user input the right choice
