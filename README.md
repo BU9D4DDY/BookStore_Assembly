@@ -202,3 +202,28 @@ FIRST_CHOICE:
 ```
 
 after that the program will display a message to ask the user to enter the number of subscription he wants between ( 00 - 99 ) and calculate the total price and print out the bill and ask the user if he wants to go back to the main menu again
+
+![5](/_resources/5.png)
+
+```assembly
+        Print membership_amount         ;display the membership_amount
+        
+        ;===== First digit =====;
+        call GetInput                   ; Get the number of Memberships      
+        
+        SUB AL, 30H                     ; converting first digit from ascii to number
+        MOV AH, 0
+        MOV BL, 10
+        MUL BL
+        MOV BL, AL  
+        
+        ;===== Second digit =====;
+        call GetInput    
+        
+        SUB AL, 30H                     ; convert second digit from ascii to number
+        MOV AH, 0
+        ADD AL, BL      
+        mov membership_num, al 
+      
+        Print NewLine
+   ```     
