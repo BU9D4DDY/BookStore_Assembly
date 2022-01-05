@@ -55,3 +55,64 @@ The program has some **logos** for a better UI experience, these logos are:
 "                 +-+-+-+-+-+-+-+ +-+-+-+-+ +-+-+-+-+-+                    ",10,13,
 "                                                                          ",3,3,3,3,3,3,3,3,3,10,13,"$"
 ```
+
+- logo4 ( GOODBYE )
+
+```assembly
+"                              +-+-+-+-+-+-+-+                                ",10,13,
+"                              |G|O|O|D|B|Y|E|                                ",10,13,
+"                              +-+-+-+-+-+-+-+                                ",10,13,"$"  
+```
+
+Also As Mentioned This Program is Based on Functional Programming as we reduced the code by making some **MACROS** and **PROCEDURES**, and those are:
+
+- Print Function That takes a Parameter (str) Pointing to the variable holding the data to be printed.
+
+```assembly
+macro Print str
+
+    mov dx,offset str            
+    mov ah,9                     
+    int 21h
+    
+endm
+```
+
+- Returning function That is produced after finishing each action that the user take  *Like Purchasing A Subscription*.
+
+![1](/_resources/1.png)
+
+```assembly
+macro Returning
+    
+    Print Return                 ;Return is A variable holding a message to be displayed
+    call GetInput                ;the input will be saved in "al"
+    
+    push ax    
+    call NEWLINE_LOOP            ;A Procedure to print new line for 15 times for some clean formatting
+    pop ax
+    
+    cmp al, 'y'
+    je  Start                    ;if the input that is saved in "al" is equal to "y" or "Y"
+    cmp al, 'Y'                  ;The Program will go to the start and begin again
+    je  Start                    
+    
+    ;==else==;     
+    jmp ToEnd
+    
+endm
+```
+
+* Count Macro that is used to calculate the total price of number of subscriptions
+
+```assembly
+macro count value 
+
+    mov al, value
+    mov bl, membership_num
+    mul bl
+    mov result , ax
+    jmp PRINT_RESULT
+            
+endm
+```
