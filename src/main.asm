@@ -23,6 +23,11 @@ Logo2: DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                              |W|E|L|C|O|M|E|",10,13,
        DB "                              +-+-+-+-+-+-+-+",10,13,
        DB "                                   ",3,3,3,3,3,10,13,"$"
+
+Logo3: DB "                 +-+-+-+-+-+-+-+ +-+-+-+-+ +-+-+-+-+-+",10,13,
+       DB "                 |W|E|L|C|O|M|E| |B|A|C|K| |A|G|A|I|N|",10,13,
+       DB "                 +-+-+-+-+-+-+-+ +-+-+-+-+ +-+-+-+-+-+",10,13,
+       DB "                                 ",3,3,3,3,3,3,3,3,3,10,13,"$"
        
 GoodBye: 
        DB 10,13,
@@ -133,9 +138,9 @@ macro Returning
     pop ax
     
     cmp al, 'y'
-    je  Start                    ;if the input that is saved in "al" is equal to "y" or "Y"
-    cmp al, 'Y'                  ;The Program will go to the start and begin again
-    je  Start                    ;(je) jump if equal ----- (jmp)  jump
+    je  Start_again                    ;if the input that is saved in "al" is equal to "y" or "Y"
+    cmp al, 'Y'                        ;The Program will go to the start and begin again
+    je  Start_again                    ;(je) jump if equal ----- (jmp)  jump
     
     ;==else==;     
     jmp ToEnd
@@ -190,8 +195,15 @@ main proc
         ;;;;;  loop back to get_choice until the user choice is correct  ;;;;;
         Print wrong_choice  
         jmp get_choice
+        
+    Start_again:
+        
+        Print NewLine
+        Print Logo3                     ;Printing The WELCOME Logo
+        Print NewLine
+        Print menu          
+        jmp get_choice
           
-    
     ;===== Getting a membership =====;
     FIRST_CHOICE:
         
