@@ -296,4 +296,42 @@ after that the program will display a message to ask the user to enter the numbe
             Print NewLine
             Print NewLine
             Returning
-```  
+```
+
+> Second Choice
+
+IF the user decided to go back again to the main menu the program will start over and print the welcome logo and this time lets consider  a user choosing the second choice 
+
+![6](/_resources/6.png)
+
+the program will again check if there is any errors to be handled then will proceed to display the list of books available   in the store to be purchased offline.
+
+  ```assembly
+  ;===== Checking Prices And Offers =====; 
+  SECOND_CHOICE:
+  	Print INFO
+  	Returning
+  ```
+
+> Third Choice
+
+if user wants to know more about the Book Store then his choice will be ( 3 ) and the program will print out some info ...
+
+![7](/_resources/7.png)
+
+> Fourth Choice
+
+This Choice gives the user the option to end the program, the program will do so and return control to the OS but first it will produce a GOODBYE message.
+
+![8](/_resources/8.png)
+
+```assembly
+	cmp al, '4'                     ; Exit the application
+	je  ToEnd
+
+;;;;;;;;;  Ending The Program  ;;;;;;;;;;;;
+ToEnd:
+    Print GoodBye
+    .exit
+    end main
+```
