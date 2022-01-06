@@ -335,3 +335,22 @@ ToEnd:
     .exit
     end main
 ```
+### Team Members & Work Timeline
+
+We started working on this project in "**Nov 14, 2021**" and finished on "**Jan 5, 2022**" and the contributors involved in this work are 
+
+|           NAME            |                             GitHub ACCOUNT                            |
+| :-----------------------: | :-------------------------------------------------------------------: |
+| Diaa El-Dein Hassan Kamal |                [BU9D4DDY](https://github.com/BU9D4DDY)                |
+|    Ramzi Muhammad Ramzi   |            [RamziMohamad](https://github.com/RamziMohamad)            |
+|Abd El-Rahman Atef El-Sayed|[Abdelrahman-Atef-Elsayed](https://github.com/Abdelrahman-Atef-Elsayed)|
+|    Abdullah Hamdy Saleh   |             [Abdullahh74](https://github.com/Abdullahh74)             |
+|      Ali Ahmed Saeid      |               [AliAhmed3](https://github.com/AliAhmed3)               |
+
+and here is a screenshot of the workflow using **GitKraken**  software ...
+
+![2](/_resources/9.PNG)
+
+![2](/_resources/10.PNG)
+
+![2](/_resources/11.PNG)
