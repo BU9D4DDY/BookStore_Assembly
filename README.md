@@ -226,4 +226,74 @@ after that the program will display a message to ask the user to enter the numbe
         mov membership_num, al 
       
         Print NewLine
-   ```     
+        
+        ;===== Comparing Which Membership Triggered =====;
+        cmp membership_type, '1'
+        je  ADULT_0
+        cmp membership_type, '2'
+        je  CHILD_0
+        cmp membership_type, '3'
+        je  ADULT_M
+        cmp membership_type, '4'
+        je  CHILD_M
+        cmp membership_type, '5'
+        je  ADULT_Y
+        cmp membership_type, '6'
+        je  CHILD_Y
+ 
+ 		;====  based on the type  of subscription the user choosed ====; 
+        ;==== we bass the price of the subscription to the count function ====;
+        ADULT_0:
+            Count adult
+            
+        CHILD_0:
+            Count child
+            
+        ADULT_M:
+            Count adultM
+            
+        CHILD_M:
+            Count childM
+            
+        ADULT_Y:
+            Count adultY
+            
+        CHILD_Y:
+            Count childY
+                
+        ;=== After that we store the result produced by count macro into an array to print it ===;      
+        PRINT_RESULT:
+        
+            Print Total_msg      
+        
+            mov ax, result
+            mov result, 0                                       
+            
+            ;===== convert decimal to hex to print result =====;
+            LEA SI, RES
+            MOV CX,0
+            MOV BX,10                              
+            
+            LOOP1: 
+                MOV DX,0
+                DIV BX              ;DX:AX/BX >> res in AX and reminder in DX
+                ADD DL,30H
+                PUSH DX
+                INC CX
+                CMP AX,9
+                JG LOOP1
+                ADD AL,30H
+                MOV [SI],AL
+            
+            LOOP2: 
+                POP AX
+                INC SI
+                MOV [SI],AL
+                LOOP LOOP2
+            
+            Print RES
+            
+            Print NewLine
+            Print NewLine
+            Returning
+```  
