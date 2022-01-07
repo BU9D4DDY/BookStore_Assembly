@@ -354,3 +354,7 @@ and here is a screenshot of the workflow using **GitKraken**  software ...
 ![2](/_resources/10.PNG)
 
 ![2](/_resources/11.PNG)
+
+Also We have released two releases during this 
+
+![12](/_resources/12.PNG)
